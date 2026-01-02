@@ -1,6 +1,5 @@
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 interface ArtCardProps {
   title: string;
@@ -11,42 +10,42 @@ interface ArtCardProps {
   soldCount?: number;
 }
 
-const ArtCard = ({ title, price, image, category, link, soldCount }: ArtCardProps) => {
+const ArtCard = ({ title, price, image, category, link }: ArtCardProps) => {
   return (
-    <div className="group bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover-lift">
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="group block bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 card-glow"
+    >
       {/* Image */}
-      <div className="relative aspect-square overflow-hidden bg-muted">
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
         <img 
           src={image} 
           alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground">
-          {category}
-        </Badge>
-        {soldCount && soldCount > 0 && (
-          <Badge variant="secondary" className="absolute top-3 right-3">
-            {soldCount} sold
-          </Badge>
-        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <Button size="sm" className="rounded-full gap-1.5 text-xs">
+            View <ExternalLink className="h-3 w-3" />
+          </Button>
+        </div>
       </div>
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-display font-semibold text-lg text-foreground mb-1 line-clamp-2">
+        <span className="text-xs font-medium text-primary uppercase tracking-wider">
+          {category}
+        </span>
+        <h3 className="font-display font-semibold text-foreground mt-1 line-clamp-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <p className="font-body text-accent font-bold text-xl mb-3">
+        <p className="font-body text-muted-foreground text-sm mt-1">
           {price}
         </p>
-        <Button asChild className="w-full gap-2">
-          <a href={link} target="_blank" rel="noopener noreferrer">
-            View on Ko-Fi
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </Button>
       </div>
-    </div>
+    </a>
   );
 };
 
