@@ -9,69 +9,69 @@
 
 @layer base {
   :root {
-    /* Warm forest palette - extracted from artwork */
-    --background: 65 25% 92%;
-    --foreground: 35 30% 20%;
+    /* Dark Olive Swamp Theme - Moody, immersive palette */
+    --background: 75 25% 15%;
+    --foreground: 55 20% 90%;
 
-    --card: 55 30% 96%;
-    --card-foreground: 35 30% 20%;
+    --card: 75 20% 18%;
+    --card-foreground: 55 20% 90%;
 
-    --popover: 55 30% 96%;
-    --popover-foreground: 35 30% 20%;
+    --popover: 75 20% 18%;
+    --popover-foreground: 55 20% 90%;
 
-    /* Primary - Soft sage green (from vines/leaves) */
-    --primary: 85 35% 45%;
-    --primary-foreground: 55 30% 96%;
+    /* Primary - Deep olive green */
+    --primary: 80 40% 35%;
+    --primary-foreground: 55 20% 95%;
 
-    /* Secondary - Warm cream for subtle elements */
-    --secondary: 45 35% 88%;
-    --secondary-foreground: 35 30% 25%;
+    /* Secondary - Darker swamp green */
+    --secondary: 75 20% 22%;
+    --secondary-foreground: 55 20% 85%;
 
-    /* Muted - Soft olive tones */
-    --muted: 60 20% 85%;
-    --muted-foreground: 35 20% 40%;
+    /* Muted - Murky olive */
+    --muted: 70 15% 25%;
+    --muted-foreground: 55 15% 65%;
 
-    /* Accent - Warm terracotta/orange (from character hair/cattails) */
-    --accent: 25 55% 50%;
-    --accent-foreground: 55 30% 96%;
+    /* Accent - Warm amber/gold (from cattails) */
+    --accent: 35 60% 50%;
+    --accent-foreground: 75 25% 12%;
 
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 55 30% 96%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 55 20% 95%;
 
-    --border: 60 15% 82%;
-    --input: 60 20% 88%;
-    --ring: 85 35% 45%;
+    --border: 75 15% 28%;
+    --input: 75 15% 22%;
+    --ring: 80 40% 35%;
 
     --radius: 1rem;
 
     /* Custom tokens for the theme */
-    --glow: 85 35% 45%;
-    --forest-light: 75 30% 85%;
-    --forest-mid: 80 25% 75%;
-    --cream: 45 40% 94%;
-    --warm-brown: 25 35% 35%;
+    --glow: 80 40% 35%;
+    --forest-light: 75 20% 25%;
+    --forest-mid: 70 18% 20%;
+    --cream: 45 25% 85%;
+    --warm-brown: 30 30% 25%;
   }
 
   .dark {
-    --background: 75 20% 12%;
-    --foreground: 50 30% 92%;
-    --card: 75 20% 16%;
-    --card-foreground: 50 30% 92%;
-    --popover: 75 20% 16%;
-    --popover-foreground: 50 30% 92%;
-    --primary: 85 40% 50%;
-    --primary-foreground: 75 20% 10%;
-    --secondary: 75 15% 22%;
-    --secondary-foreground: 50 30% 90%;
-    --muted: 75 15% 20%;
-    --muted-foreground: 50 15% 60%;
-    --accent: 25 60% 55%;
-    --accent-foreground: 75 20% 10%;
-    --destructive: 0 62% 40%;
-    --destructive-foreground: 50 30% 92%;
-    --border: 75 15% 25%;
-    --input: 75 15% 20%;
-    --ring: 85 40% 50%;
+    --background: 75 25% 10%;
+    --foreground: 55 20% 92%;
+    --card: 75 20% 14%;
+    --card-foreground: 55 20% 92%;
+    --popover: 75 20% 14%;
+    --popover-foreground: 55 20% 92%;
+    --primary: 80 45% 40%;
+    --primary-foreground: 75 25% 10%;
+    --secondary: 75 18% 18%;
+    --secondary-foreground: 55 20% 88%;
+    --muted: 70 15% 18%;
+    --muted-foreground: 55 15% 55%;
+    --accent: 35 65% 55%;
+    --accent-foreground: 75 25% 10%;
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 55 20% 92%;
+    --border: 75 15% 22%;
+    --input: 75 15% 16%;
+    --ring: 80 45% 40%;
   }
 }
 
