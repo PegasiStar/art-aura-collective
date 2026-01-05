@@ -5,12 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SectionHeader from "@/components/shared/SectionHeader";
+import VineDecoration from "@/components/shared/VineDecoration";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle, Clock, Mail, AlertCircle } from "lucide-react";
+
+import commissionShowcase from "@/assets/commission-showcase.png";
 
 const commissionSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
@@ -32,7 +35,7 @@ const commissionTypes = [
 ];
 
 const Commissions = () => {
-  const [isOpen] = useState(true); // Commission status
+  const [isOpen] = useState(true);
   const { toast } = useToast();
   
   const form = useForm<CommissionFormData>({
@@ -47,7 +50,6 @@ const Commissions = () => {
   });
 
   const onSubmit = (data: CommissionFormData) => {
-    // In production, this would send to an email service or backend
     toast({
       title: "Commission Request Sent! 🐸",
       description: "I'll get back to you within 2-3 business days. Thank you!",
@@ -59,17 +61,35 @@ const Commissions = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
-      <main className="flex-1 py-12 md:py-20">
-        <div className="container">
+      <main className="flex-1 pt-20 relative overflow-hidden">
+        {/* Decorative vines */}
+        <VineDecoration variant="top-left" className="opacity-40" />
+        <VineDecoration variant="top-right" className="opacity-40" />
+        
+        <div className="container py-12 md:py-20 relative z-10">
           <SectionHeader
             title="Commission Info 🎨"
             subtitle="Let's create something magical together!"
           />
 
+          {/* Showcase Image */}
+          <div className="mb-12 max-w-4xl mx-auto">
+            <div className="rounded-3xl overflow-hidden border-2 border-border shadow-xl">
+              <img 
+                src={commissionShowcase}
+                alt="Commission example - witch character in enchanted village"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-muted-foreground mt-4 font-body">
+              Example of a custom character commission piece
+            </p>
+          </div>
+
           {/* Status Badge */}
           <div className="flex justify-center mb-10">
             <Badge 
-              className={`text-lg px-6 py-2 ${isOpen ? "bg-green-500/20 text-green-700" : "bg-red-500/20 text-red-700"}`}
+              className={`text-lg px-6 py-2 font-semibold ${isOpen ? "bg-primary/20 text-primary border-primary/30" : "bg-destructive/20 text-destructive border-destructive/30"} border`}
             >
               {isOpen ? (
                 <>
@@ -85,53 +105,56 @@ const Commissions = () => {
             </Badge>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12 relative">
+            {/* Bottom decorations */}
+            <VineDecoration variant="cattails-left" className="opacity-30" />
+            
             {/* Pricing & Info */}
             <div>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-6">
+              <h3 className="font-display text-2xl text-foreground mb-6">
                 Commission Types & Pricing
               </h3>
               
               <div className="space-y-4 mb-8">
                 {commissionTypes.map((type) => (
-                  <div key={type.name} className="bg-card p-4 rounded-xl border border-border">
+                  <div key={type.name} className="bg-card p-4 rounded-xl border-2 border-border hover:border-primary/30 transition-colors">
                     <div className="flex justify-between items-start">
                       <div>
-                        <h4 className="font-display font-semibold text-foreground">{type.name}</h4>
+                        <h4 className="font-display text-foreground">{type.name}</h4>
                         <p className="font-body text-sm text-muted-foreground">{type.description}</p>
                       </div>
-                      <Badge variant="secondary" className="font-body">{type.price}</Badge>
+                      <Badge variant="secondary" className="font-body font-semibold">{type.price}</Badge>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Terms */}
-              <div className="bg-accent/10 p-6 rounded-xl">
-                <h4 className="font-display font-semibold text-foreground mb-4">📋 Terms & Conditions</h4>
+              <div className="bg-accent/10 p-6 rounded-2xl border border-accent/20">
+                <h4 className="font-display text-foreground mb-4">📋 Terms & Conditions</h4>
                 <ul className="space-y-2 font-body text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     50% deposit required before starting work
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     Remaining 50% due upon completion
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     2 free revisions included, additional revisions at extra cost
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     Turnaround: 1-3 weeks depending on complexity
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     Personal and commercial use licenses available
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-primary">•</span>
+                    <span className="text-primary font-bold">•</span>
                     I reserve the right to decline any commission
                   </li>
                 </ul>
@@ -144,8 +167,8 @@ const Commissions = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-card p-8 rounded-2xl border border-border">
-              <h3 className="font-display text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <div className="bg-card p-8 rounded-3xl border-2 border-border shadow-lg">
+              <h3 className="font-display text-2xl text-foreground mb-6 flex items-center gap-2">
                 <Mail className="h-6 w-6 text-primary" />
                 Request a Commission
               </h3>
@@ -153,13 +176,13 @@ const Commissions = () => {
               {isOpen ? (
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <div>
-                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">
+                    <label className="font-body text-sm font-semibold text-foreground mb-1.5 block">
                       Your Name
                     </label>
                     <Input 
                       {...form.register("name")}
                       placeholder="What should I call you?"
-                      className="font-body"
+                      className="font-body rounded-xl"
                     />
                     {form.formState.errors.name && (
                       <p className="text-destructive text-sm mt-1">{form.formState.errors.name.message}</p>
@@ -167,14 +190,14 @@ const Commissions = () => {
                   </div>
 
                   <div>
-                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">
+                    <label className="font-body text-sm font-semibold text-foreground mb-1.5 block">
                       Email Address
                     </label>
                     <Input 
                       {...form.register("email")}
                       type="email"
                       placeholder="your@email.com"
-                      className="font-body"
+                      className="font-body rounded-xl"
                     />
                     {form.formState.errors.email && (
                       <p className="text-destructive text-sm mt-1">{form.formState.errors.email.message}</p>
@@ -182,12 +205,12 @@ const Commissions = () => {
                   </div>
 
                   <div>
-                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">
+                    <label className="font-body text-sm font-semibold text-foreground mb-1.5 block">
                       Commission Type
                     </label>
                     <select 
                       {...form.register("commissionType")}
-                      className="w-full px-4 py-2 rounded-lg border border-input bg-background font-body focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-2 rounded-xl border border-input bg-background font-body focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select a type...</option>
                       {commissionTypes.map((type) => (
@@ -200,13 +223,13 @@ const Commissions = () => {
                   </div>
 
                   <div>
-                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">
+                    <label className="font-body text-sm font-semibold text-foreground mb-1.5 block">
                       Budget Range (USD)
                     </label>
                     <Input 
                       {...form.register("budget")}
                       placeholder="e.g., $50-100"
-                      className="font-body"
+                      className="font-body rounded-xl"
                     />
                     {form.formState.errors.budget && (
                       <p className="text-destructive text-sm mt-1">{form.formState.errors.budget.message}</p>
@@ -214,28 +237,28 @@ const Commissions = () => {
                   </div>
 
                   <div>
-                    <label className="font-body text-sm font-medium text-foreground mb-1.5 block">
+                    <label className="font-body text-sm font-semibold text-foreground mb-1.5 block">
                       Project Description
                     </label>
                     <Textarea 
                       {...form.register("description")}
                       placeholder="Tell me about your project! Include details like style preferences, characters, colors, intended use, references, etc."
                       rows={5}
-                      className="font-body resize-none"
+                      className="font-body resize-none rounded-xl"
                     />
                     {form.formState.errors.description && (
                       <p className="text-destructive text-sm mt-1">{form.formState.errors.description.message}</p>
                     )}
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full rounded-full font-semibold">
                     Send Commission Request 🐸
                   </Button>
                 </form>
               ) : (
                 <div className="text-center py-12">
                   <span className="text-6xl mb-4 block">😴</span>
-                  <h4 className="font-display text-xl font-semibold text-foreground mb-2">
+                  <h4 className="font-display text-xl text-foreground mb-2">
                     Commissions are currently closed
                   </h4>
                   <p className="font-body text-muted-foreground">
