@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ArtCard from "@/components/shared/ArtCard";
+import VineDecoration from "@/components/shared/VineDecoration";
 import { artworks, categories } from "@/data/artworks";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -19,9 +20,12 @@ const DigitalArt = () => {
 
       <main className="flex-1 pt-16">
         {/* Page Header */}
-        <section className="py-16 md:py-24 bg-secondary/30">
-          <div className="container text-center">
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <section className="py-16 md:py-24 bg-secondary/40 relative overflow-hidden">
+          <VineDecoration variant="top-left" className="opacity-30" />
+          <VineDecoration variant="top-right" className="opacity-30" />
+          
+          <div className="container text-center relative z-10">
+            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4">
               Digital <span className="text-primary">Art Shop</span>
             </h1>
             <p className="font-body text-muted-foreground max-w-lg mx-auto">
@@ -30,8 +34,10 @@ const DigitalArt = () => {
           </div>
         </section>
 
-        <section className="py-12 md:py-16">
-          <div className="container">
+        <section className="py-12 md:py-16 relative overflow-hidden">
+          <VineDecoration variant="cattails-right" className="opacity-20" />
+          
+          <div className="container relative z-10">
             {/* Category Filters */}
             <div className="flex flex-wrap justify-center gap-2 mb-10">
               {categories.map((category) => (
@@ -39,7 +45,7 @@ const DigitalArt = () => {
                   key={category}
                   variant={activeCategory === category ? "default" : "outline"}
                   onClick={() => setActiveCategory(category)}
-                  className="rounded-full"
+                  className="rounded-full font-semibold"
                 >
                   {category}
                 </Button>
@@ -70,14 +76,14 @@ const DigitalArt = () => {
             )}
 
             {/* Ko-Fi Promo */}
-            <div className="mt-16 p-8 md:p-12 bg-card border border-border rounded-2xl text-center">
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+            <div className="mt-16 p-8 md:p-12 bg-card border-2 border-border rounded-3xl text-center shadow-lg">
+              <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
                 Can't find what you're looking for?
               </h3>
               <p className="font-body text-muted-foreground mb-6 max-w-xl mx-auto">
                 Visit my Ko-Fi shop for the complete collection, including exclusive items and new releases!
               </p>
-              <Button asChild size="lg" className="rounded-full gap-2 px-8">
+              <Button asChild size="lg" className="rounded-full gap-2 px-8 font-semibold glow-primary">
                 <a href="https://ko-fi.com/maybeechristine/shop" target="_blank" rel="noopener noreferrer">
                   Visit Full Ko-Fi Shop
                   <ArrowRight className="h-4 w-4" />
