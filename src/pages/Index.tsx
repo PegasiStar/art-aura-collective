@@ -130,8 +130,8 @@ const Index = () => {
               <div className="relative">
                 <div className="aspect-square rounded-3xl overflow-hidden border-2 border-border shadow-xl">
                   <img 
-                    src="https://storage.ko-fi.com/cdn/useruploads/post/5699ce56-123c-4fa8-b511-afa6a90fe879_bobatowallpaper5.png" 
-                    alt="Boba Toad artwork"
+                    src={christineAvatar}
+                    alt="Christine"
                     className="w-full h-full object-cover"
                   />
                 </div>
